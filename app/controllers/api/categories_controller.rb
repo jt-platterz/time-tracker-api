@@ -4,11 +4,11 @@ module Api
     before_action :set_category, only: :show
 
     def index
-      render json: @categories
+      render json: authorize(@categories)
     end
 
     def show
-      render json: @category
+      render json: authorize(@category)
     end
 
     private

@@ -8,21 +8,21 @@ module Api
         e.datetime = DateTime.now
       end
 
-      @event.save!
+      authorize(@event).save!
 
       render json: @event
     end
 
     def index
-      render json: @events
+      render json: authorize(@events)
     end
 
     def show
-      render json: @event
+      render json: authorize(@event)
     end
 
     def update
-      @event.update!(permitted_params)
+      authorize(@event).update!(permitted_params)
       render json: @event
     end
 

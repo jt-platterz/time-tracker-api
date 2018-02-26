@@ -4,11 +4,11 @@ module Api
     before_action :set_subcategory, only: :show
 
     def index
-      render json: @subcategories
+      render json: authorize(@subcategories)
     end
 
     def show
-      render json: @subcategory
+      render json: authorize(@subcategory)
     end
 
     private
