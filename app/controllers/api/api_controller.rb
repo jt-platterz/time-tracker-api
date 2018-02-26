@@ -3,6 +3,7 @@ module Api
     include ::ActionController::Serialization
     include Pundit
 
+    before_action :set_cors_headers
     before_action :authenticate_request
 
     def authenticate_request
@@ -27,6 +28,11 @@ module Api
 
     def authorize(record, query = nil)
       record if super(record, query)
+    end
+
+    def set_cors_headers
+      response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'                                                                                                                                                                                                     
+      response.headers['Access-Control-Allow-Credentials'] = 'true'
     end
   end
 end

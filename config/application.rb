@@ -22,12 +22,12 @@ module TimeTrackerApi
     
     config.api_only = true
 
-    config.middleware.use Rack::Cors do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*',
           :headers => :any,
-          :methods => [:get, :put, :patch, :options, :post],
+          :methods => [:get, :put, :patch, :options, :post, :delete],
           :max_age => 15
       end
     end
