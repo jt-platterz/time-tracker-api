@@ -15,7 +15,9 @@ module Api
     end
 
     def decoded_token
-      @decoded_auth_token ||= JWT.decode(http_auth_header, ENV['SECRET_KEY'], false)[0]
+      if http_auth_header
+        return @decoded_auth_token ||= JWT.decode(http_auth_header, ENV['SECRET_KEY'], false)[0]
+      end
     end
   
     def http_auth_header
