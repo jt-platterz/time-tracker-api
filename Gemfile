@@ -11,7 +11,6 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'bcrypt'
 gem 'jwt'
-gem 'simple_command'
 
 gem 'pundit'
 gem 'active_model_serializers'

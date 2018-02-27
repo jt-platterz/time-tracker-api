@@ -11,11 +11,11 @@ module Api
     end
 
     def current_user
-      @user ||= User.find(decoded_token[:user_id]) if decoded_token
+      @user ||= User.find(decoded_token['user_id']) if decoded_token
     end
 
     def decoded_token
-      @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+      @decoded_auth_token ||= JWT.decode(http_auth_header, ENV['SECRET_KEY'], false)[0]
     end
   
     def http_auth_header

@@ -30,7 +30,7 @@ module Api
     end
 
     def auth_token
-      JsonWebToken.encode(user_id: @user.id) if @user
+      JWT.encode({user_id: @user.id}, ENV['SECRET_KEY'], 'HS256') if @user
     end
   end
 end
