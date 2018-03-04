@@ -2,23 +2,23 @@ class EventPolicy < ApplicationPolicy
   alias event record
 
   def show?
-    authenticated?# event.user_id === current_user&.id
+    authenticated? && event.user_id === current_user&.id
   end
 
   def index?
-    authenticated?
+    authenticated? && event.user_id === current_user&.id
   end
 
   def create?
-    authenticated?
+    authenticated? && event.user_id === current_user&.id
   end
 
   def update?
-    authenticated?# event.user_id === current_user&.id
+    authenticated? && event.user_id === current_user&.id
   end
 
   def destroy?
-    authenticated?# event.user_id === current_user&.id
+    authenticated? && event.user_id === current_user&.id
   end
 
   # class Scope < Scope
