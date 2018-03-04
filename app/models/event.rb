@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :subcategory
+  belongs_to :user
 
   delegate :category, to: :subcategory, allow_nil: true
 

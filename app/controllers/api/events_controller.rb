@@ -6,6 +6,7 @@ module Api
     def create
       @event = Event.new(permitted_params) do |e|
         e.datetime = DateTime.now
+        e.user = current_user
       end
 
       authorize(@event).save!
@@ -35,9 +36,9 @@ module Api
 
     def set_events
       if (params[:date].present? && DateTime.parse(params[:date])) || params[:subcategory_id].present?
-        @events = Event.all
+        @events = Event.where(user: current_user)
         @events = @events.where(subcategory_id: params[:subcategory_id]) if params[:subcategory_id].present?
-        @events = Event.for_date(DateTime.parse(params[:date])) if params[:date].present?
+        @events = @events.for_date(DateTime.parse(params[:date])) if params[:date].present?
       else 
         @events = Event.none
       end
