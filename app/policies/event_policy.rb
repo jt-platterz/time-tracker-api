@@ -6,7 +6,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def index?
-    authenticated? && event.user_id === current_user&.id
+    authenticated?
   end
 
   def create?
