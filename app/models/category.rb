@@ -1,6 +1,5 @@
 class Category < ApplicationRecord
-  has_many :subcategories
-  has_many :events, through: :subcategories
+  has_many :events
 
   validates :title, :color, presence: true
   validates :color, length: { is: 6 }

@@ -49,7 +49,7 @@ module Api
     end
 
     def permitted_params
-      params.require(:event).permit(:title, :time, :subcategory_id)
+      params.require(:event).permit(:title, :time, :category_id)
     end
   end
 end

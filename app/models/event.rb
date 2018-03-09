@@ -1,10 +1,8 @@
 class Event < ApplicationRecord
-  belongs_to :subcategory
+  belongs_to :category
   belongs_to :user
 
-  delegate :category, to: :subcategory, allow_nil: true
-
-  validates :title, :subcategory_id, :datetime, presence: true
+  validates :title, :category_id, :datetime, presence: true
 
   scope :for_date, -> (date = nil) do
     if date.nil?
