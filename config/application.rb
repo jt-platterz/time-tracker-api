@@ -33,5 +33,7 @@ module TimeTrackerApi
     ActiveModelSerializers.config.adapter = :json
 
     config.time_zone = 'Eastern Time (US & Canada)'
+
+    config.action_cable.disable_request_forgery_protection = true
   end
 end
